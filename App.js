@@ -1,9 +1,9 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-// import SignUpScreen from './SignUpScreen';
+import SignUpScreen from "./SignUpScreen";
 // import RestPassword from './RestPassword';
-import LoginScreen from "./LoginScreen";
+// import LoginScreen from "./LoginScreen";
 
 const cache = new InMemoryCache();
 const client = new ApolloClient({
@@ -17,9 +17,9 @@ export default function App() {
     <ApolloProvider client={client}>
       {/* <LoginScreen /> */}
       <View style={{ marginTop: 100 }}>
-        <Text>APP Interface 1</Text>
-        {/* <SignUpScreen /> */}
-        <LoginScreen />
+        <Text>APP Interface 3</Text>
+        <SignUpScreen />
+        {/* <LoginScreen /> */}
         {/* <RestPassword/> */}
       </View>
       <StatusBar />
