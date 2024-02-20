@@ -11,8 +11,10 @@ const Card = ({ item }) => {
         resizeMode="contain"
       />
       <Text style={styles.text}>Name: {item.name}</Text>
-      <Text style={styles.text}>Type: {item.type}</Text>
-      <Text style={styles.text}>Description: {item.shortDescription}</Text>
+      <Text style={styles.text}>Type: {item.onSale}</Text>
+      <Text style={styles.text}>Price: {item.price}</Text>
+      <Text style={styles.text}>RegularPrice: {item.regularPrice}</Text>
+      <Text style={styles.text}>ReviewCount: {item.reviewCount}</Text>
     </View>
   );
 };

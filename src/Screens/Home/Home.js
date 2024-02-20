@@ -5,21 +5,33 @@ import Card from "../../Components/Card";
 
 //query
 const GET_PRODUCTS = gql`
-  query getproducts {
-    products {
-      nodes {
+query getproducts {
+  products {
+    nodes {
+      id
+      slug
+      name
+      image {
         id
-        name
-        type
-        shortDescription
-        image {
-          id
-          sourceUrl
-          altText
-        }
+        sourceUrl
+        altText
       }
+      ... on SimpleProduct {
+        onSale
+        price
+        regularPrice
+      }
+      ... on VariableProduct {
+        onSale
+        price
+        regularPrice
+      }
+      reviewCount
+      reviewsAllowed
     }
+    found
   }
+}
 `;
 
 const Home = () => {
