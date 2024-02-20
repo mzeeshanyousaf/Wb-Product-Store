@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Image, Text } from "react-native";
 
+
 const Card = ({ item }) => {
   return (
     <View style={styles.card}>

@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, FlatList } from "react-native";
 import { useQuery, gql } from '@apollo/client';
 import Card from "../../Components/Card";
 
+//query
 const GET_PRODUCTS = gql`
   query getproducts {
     products {
