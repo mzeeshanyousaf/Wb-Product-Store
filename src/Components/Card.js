@@ -10,7 +10,6 @@ const Card = ({ item }) => {
         source={{ uri: item.image.sourceUrl }}
         resizeMode="contain"
       />
-      {console.log(item.image.sourceUrl)}
       <Text style={styles.text}>Name: {item.name}</Text>
       <Text style={styles.text}>Type: {item.type}</Text>
       <Text style={styles.text}>Description: {item.shortDescription}</Text>
