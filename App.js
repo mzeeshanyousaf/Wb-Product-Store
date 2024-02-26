@@ -17,7 +17,7 @@ import ForgetPage from "./src/Screens/Forget/ForgetPage";
 
 const cache = new InMemoryCache();
 const client = new ApolloClient({
-  uri: "http://192.168.0.88:8080/wbpro/wbpro",
+  uri: "https://simpliplugin.com/wbstore/wbpro",
   cache,
   defaultOptions: { watchQuery: { fetchPolicy: "cache-and-network" } },
 });
