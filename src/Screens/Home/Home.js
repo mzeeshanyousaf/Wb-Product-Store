@@ -1,9 +1,11 @@
 import React from "react";
-import { View, StyleSheet, Text, FlatList, SafeAreaView } from "react-native";
+import { View, StyleSheet, Text, FlatList, SafeAreaView, ScrollView, Image } from "react-native";
 import { useQuery, gql } from "@apollo/client";
 import Card from "../../Components/Card";
+import Offer from "../../Components/Offer";
+import Category from "../../Components/Category";
 
-//query
+// Query
 const GET_PRODUCTS = gql`
   query getproducts {
     products {
@@ -41,17 +43,27 @@ const Home = () => {
   if (error) return <Text>Error: {error.message}</Text>;
 
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        paddingVertical: 40,
-        paddingHorizontal: 20,
-      }}
-    >
-      <Text style={{ color: "black", fontSize: 33 }}>
-        {"Welcome to WB Store"}
-      </Text>
+    <SafeAreaView style={{ flex: 1, paddingVertical: 40, paddingHorizontal: 20 }}>
+      <Text style={{ color: "black", fontSize: 33 }}>{"Welcome to WB Store"}</Text>
       <Text style={{ color: "black", fontSize: 28 }}>Products</Text>
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+        <Offer
+          imagePath={require("../../../assets/Promotion Image.png")}
+          saleTitle="Mega Sale"
+          saleValue="50% Flat Sale"
+          hour="12"
+          minute="52"
+          seconds="16"
+        />
+        <Offer
+          imagePath={require("../../../assets/Promotion Image.png")}
+          saleTitle="Mega Sale"
+          saleValue="80% Flat Sale"
+          hour="6"
+          minute="52"
+          seconds="16"
+        />
+      </ScrollView>
       <FlatList
         data={data.products.nodes}
         renderItem={({ item }) => <Card item={item} />}
