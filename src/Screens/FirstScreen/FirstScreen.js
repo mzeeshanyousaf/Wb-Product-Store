@@ -34,7 +34,7 @@ const FirstScreen = ({ navigation }) => {
         style={styles.button}
         onPress={() => navigation.navigate("LoginSignPage")}
       >
-        <Text style={styles.buttonText}>VISITs</Text>
+        <Text style={styles.buttonText}>VISIT</Text>
       </TouchableOpacity>
     </View>
   );
