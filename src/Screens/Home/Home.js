@@ -1,46 +1,39 @@
 import React from "react";
-import { View, StyleSheet, Text, FlatList , Image ,ScrollView} from "react-native";
-import { useQuery, gql } from '@apollo/client';
+import { View, StyleSheet, Text, FlatList, SafeAreaView, ScrollView, Image } from "react-native";
+import { useQuery, gql } from "@apollo/client";
 import Card from "../../Components/Card";
 import Offer from "../../Components/Offer";
 import Category from "../../Components/Category";
-//query
+
+// Query
 const GET_PRODUCTS = gql`
-query getproducts {
-  products {
-    nodes {
-      id
-      databaseId
-      slug
-      name
-      ... on SimpleProduct {
-        onSale
-        price
-        regularPrice
-      }
-      ... on VariableProduct {
-        onSale
-        price
-        regularPrice
-      }
-      reviewCount
-      reviewsAllowed
-      image {
-        altText
-        sourceUrl
-        comments {
-          edges {
-            node {
-              content(format: RAW)
-            }
-          }
+  query getproducts {
+    products {
+      nodes {
+        id
+        slug
+        name
+        image {
+          id
+          sourceUrl
+          altText
         }
+        ... on SimpleProduct {
+          onSale
+          price
+          regularPrice
+        }
+        ... on VariableProduct {
+          onSale
+          price
+          regularPrice
+        }
+        reviewCount
+        reviewsAllowed
       }
-      shortDescription
+      found
     }
-    found
   }
-}
 `;
 
 const Home = () => {
@@ -50,38 +43,36 @@ const Home = () => {
   if (error) return <Text>Error: {error.message}</Text>;
 
   return (
-
-    <View style={{ alignItems: "center", paddingRight: 20, paddingLeft: 20 }}>
+    <SafeAreaView style={{ flex: 1, paddingVertical: 40, paddingHorizontal: 20 }}>
+      <Text style={{ color: "black", fontSize: 33 }}>{"Welcome to WB Store"}</Text>
+      <Text style={{ color: "black", fontSize: 28 }}>Products</Text>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-       <Offer
-      imagePath={require('../../../assets/Promotion Image.png')}
-      saleTitle="Mega Sale"
-      saleValue="50% Flat Sale"
-      hour="12"
-      minute="52"
-      seconds="16"
-      />
-      <Offer
-      imagePath={require('../../../assets/Promotion Image.png')}
-      saleTitle="Mega Sale"
-      saleValue="80% Flat Sale"
-      hour="6"
-      minute="52"
-      seconds="16"
-      />
-        </ScrollView>
-      
-      <FlatList horizontal={true} showsHorizontalScrollIndicator={false}
+        <Offer
+          imagePath={require("../../../assets/Promotion Image.png")}
+          saleTitle="Mega Sale"
+          saleValue="50% Flat Sale"
+          hour="12"
+          minute="52"
+          seconds="16"
+        />
+        <Offer
+          imagePath={require("../../../assets/Promotion Image.png")}
+          saleTitle="Mega Sale"
+          saleValue="80% Flat Sale"
+          hour="6"
+          minute="52"
+          seconds="16"
+        />
+      </ScrollView>
+      <FlatList
         data={data.products.nodes}
         renderItem={({ item }) => <Card item={item} />}
         keyExtractor={(item) => item.id.toString()}
       />
-       {/* <Category/> */}
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({});
-
 
 export default Home;
