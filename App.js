@@ -2,6 +2,7 @@ import React from "react";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 const Stack = createNativeStackNavigator();
 
 /// MY components
@@ -10,8 +11,9 @@ import LoginPage from "./src/Screens/Login/LoginPage";
 import SignPage from "./src/Screens/Sign/SignPage";
 import WebImg from "./src/Components/WebImg";
 import FirstScreen from "./src/Screens/FirstScreen/FirstScreen";
-import Home from "./src/Screens/Home/Home";
 import ForgetPage from "./src/Screens/Forget/ForgetPage";
+import TabNavigation from "./Navigation/TabNavigation";
+import SearchEx from "./src/Screens/Exployre/SearchEx";
 
 /// MY components
 
@@ -49,7 +51,16 @@ const App = () => {
           <Stack.Screen name="Login" component={LoginPage} />
           <Stack.Screen name="Sign" component={SignPage} />
           <Stack.Screen name="Forget" component={ForgetPage} />
-          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Drawer"
+            component={TabNavigation}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="SearchEx"
+            component={SearchEx}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </ApolloProvider>

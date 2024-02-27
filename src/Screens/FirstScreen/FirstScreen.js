@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import { Color } from "../../Color/Color";
+import { AntDesign } from "@expo/vector-icons";
 const FirstScreen = ({ navigation }) => {
   return (
     <View
@@ -34,7 +35,13 @@ const FirstScreen = ({ navigation }) => {
         style={styles.button}
         onPress={() => navigation.navigate("LoginSignPage")}
       >
+<<<<<<< Updated upstream
         <Text style={styles.buttonText}>VISIT</Text>
+=======
+        <Text style={styles.buttonText}>
+          <AntDesign name="arrowright" size={25} color={"white"} />
+        </Text>
+>>>>>>> Stashed changes
       </TouchableOpacity>
     </View>
   );

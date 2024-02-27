@@ -1,37 +1,37 @@
 import React from "react";
-import { View, StyleSheet, Text, FlatList } from "react-native";
-import { useQuery, gql } from '@apollo/client';
+import { View, StyleSheet, Text, FlatList, SafeAreaView } from "react-native";
+import { useQuery, gql } from "@apollo/client";
 import Card from "../../Components/Card";
 
 //query
 const GET_PRODUCTS = gql`
-query getproducts {
-  products {
-    nodes {
-      id
-      slug
-      name
-      image {
+  query getproducts {
+    products {
+      nodes {
         id
-        sourceUrl
-        altText
+        slug
+        name
+        image {
+          id
+          sourceUrl
+          altText
+        }
+        ... on SimpleProduct {
+          onSale
+          price
+          regularPrice
+        }
+        ... on VariableProduct {
+          onSale
+          price
+          regularPrice
+        }
+        reviewCount
+        reviewsAllowed
       }
-      ... on SimpleProduct {
-        onSale
-        price
-        regularPrice
-      }
-      ... on VariableProduct {
-        onSale
-        price
-        regularPrice
-      }
-      reviewCount
-      reviewsAllowed
+      found
     }
-    found
   }
-}
 `;
 
 const Home = () => {
@@ -41,19 +41,26 @@ const Home = () => {
   if (error) return <Text>Error: {error.message}</Text>;
 
   return (
-    <View style={{ alignItems: "center", padding: 20 }}>
-      <Text style={{ color: "black", fontSize: 33 }}>{"Welcome to WB Store"}</Text>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        paddingVertical: 40,
+        paddingHorizontal: 20,
+      }}
+    >
+      <Text style={{ color: "black", fontSize: 33 }}>
+        {"Welcome to WB Store"}
+      </Text>
       <Text style={{ color: "black", fontSize: 28 }}>Products</Text>
       <FlatList
         data={data.products.nodes}
         renderItem={({ item }) => <Card item={item} />}
         keyExtractor={(item) => item.id.toString()}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({});
-
 
 export default Home;
