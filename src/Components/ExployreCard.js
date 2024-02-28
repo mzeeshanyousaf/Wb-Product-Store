@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 1,
-    borderColor: "#EBF0FF",
+    borderColor: "#40BFFF",
   },
   CardTitle: {
     color: "#9098B1",

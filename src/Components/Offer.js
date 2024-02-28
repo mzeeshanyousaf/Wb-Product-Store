@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
         marginVertical:20,
         width:360,
         borderRadius:20,
-        overflow:"hidden"
+        overflow:"hidden",
+        
     },
     promotion:{
         fontSize:32,

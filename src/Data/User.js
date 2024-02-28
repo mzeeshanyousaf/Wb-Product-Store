@@ -338,3 +338,32 @@
 //     thumbnailUrl: "https://via.placeholder.com/150/68e0a8",
 //   },
 // ];
+export const SearchData = [
+    "Nike Air Max 270 React ENG",
+    "Nike Air Vapormax 360",
+    "Nike Air Max 270 React ENG",
+    "Nike Air Max 270 React",
+    "Nike Air VaporMax Flyknit 3",
+    "Nike Air Max 97 Utility",
+    "hasdhlksahdlh",
+    "Adidas Ultraboost 21",
+    "Adidas NMD R1",
+    "Adidas Superstar",
+    "Puma RS-X",
+    "Puma Suede Classic",
+    "New Balance 574",
+    "New Balance 990v5",
+    "Under Armour HOVR Phantom 2",
+    // Additional data
+    "Reebok Classic Leather",
+    "Reebok Nano X",
+    "Converse Chuck Taylor All Star",
+    "Converse One Star",
+    "Vans Old Skool",
+    "Vans Sk8-Hi",
+    "Asics Gel-Kayano 27",
+    "Asics Gel-Nimbus 23",
+    "Saucony Jazz Original",
+    "Brooks Ghost 13",
+  ];
+  

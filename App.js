@@ -15,6 +15,8 @@ import FirstScreen from "./src/Screens/FirstScreen/FirstScreen";
 import ForgetPage from "./src/Screens/Forget/ForgetPage";
 import TabNavigation from "./Navigation/TabNavigation";
 import SearchEx from "./src/Screens/Exployre/SearchEx";
+import SinglePage from "./src/Screens/SinglePage/SinglePage";
+
 /// MY components
 
 const cache = new InMemoryCache();
@@ -48,11 +50,6 @@ const App = () => {
             component={TabNavigation}
           />
           <Stack.Screen
-            options={{ headerShown: false }}
-            name="Home"
-            component={TabNavigation}
-          />
-          <Stack.Screen
             name="FirstScreen"
             component={FirstScreen}
             options={{ headerShown: false }}
@@ -66,6 +63,11 @@ const App = () => {
             name="SearchEx"
             component={SearchEx}
           />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="SinglePage"
+            component={SinglePage}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </ApolloProvider>
@@ -73,3 +75,4 @@ const App = () => {
 };
 
 export default App;
+

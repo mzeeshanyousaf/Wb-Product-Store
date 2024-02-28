@@ -1,10 +1,14 @@
 import React from "react";
+import { useState } from "react";
 import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
 
-const Card = ({ item }) => {
+
+const Card = ({ item , space, index, navigation }) => {
+ const [GetId, setgetId] = useState("");
+
   return (
-    <View style={styles.card}>
-      <TouchableOpacity>
+    <View style={[styles.card , { width: (space) ? space:150}]} key={index}>
+      <View>
         <View style={styles.cardbox}>
           <View style={{ justifyContent: "center", alignItems: "center" }}>
             <Image
@@ -19,14 +23,14 @@ const Card = ({ item }) => {
           <Text style={styles.cardRegular}>{item.regularPrice}</Text>
           <Text style={styles.cardReview}> {item.reviewCount}</Text>
         </View>
-      </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   cardbox: {
-    width: 140,
+    
     padding: 10,
     borderWidth: 1,
     borderColor: "silver",
