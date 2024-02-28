@@ -35,7 +35,10 @@ const FirstScreen = ({ navigation }) => {
         style={styles.button}
         onPress={() => navigation.navigate("LoginSignPage")}
       >
-        <Text style={styles.buttonText}>VISIT</Text>
+        <Text style={styles.buttonText}>
+          <AntDesign name="arrowright" size={25} color={"white"} />
+        </Text>
+
       </TouchableOpacity>
     </View>
   );

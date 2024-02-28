@@ -15,7 +15,6 @@ import FirstScreen from "./src/Screens/FirstScreen/FirstScreen";
 import ForgetPage from "./src/Screens/Forget/ForgetPage";
 import TabNavigation from "./Navigation/TabNavigation";
 import SearchEx from "./src/Screens/Exployre/SearchEx";
-
 /// MY components
 
 const cache = new InMemoryCache();
@@ -43,7 +42,12 @@ const App = () => {
             ),
           }}
         >
-             <Stack.Screen
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Home"
+            component={TabNavigation}
+          />
+          <Stack.Screen
             options={{ headerShown: false }}
             name="Home"
             component={TabNavigation}
@@ -57,7 +61,6 @@ const App = () => {
           <Stack.Screen name="Login" component={LoginPage} />
           <Stack.Screen name="Sign" component={SignPage} />
           <Stack.Screen name="Forget" component={ForgetPage} />
-       
           <Stack.Screen
             options={{ headerShown: false }}
             name="SearchEx"
