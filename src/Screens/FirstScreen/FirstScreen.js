@@ -38,6 +38,7 @@ const FirstScreen = ({ navigation }) => {
         <Text style={styles.buttonText}>
           <AntDesign name="arrowright" size={25} color={"white"} />
         </Text>
+
       </TouchableOpacity>
     </View>
   );

@@ -40,9 +40,11 @@ const LoginScreen = ({ navigation }) => {
         },
       });
       setLoader(false);
-      navigation.navigate("Home", {
-        name: username,
-      });
+      navigation.navigate("Home"
+      //  ,{
+      //   name: username,
+      // }
+      );
       setUsername("");
       setPassword("");
       console.log("User Token:", data.login.authToken);

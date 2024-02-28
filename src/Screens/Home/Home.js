@@ -77,79 +77,15 @@ const Home = ({ navigation }) => {
           </ScrollView>
         </View>
         <View>
-          <View
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginVertical: 25,
-            }}
-          >
-            <Text style={styles.category}>Flash Sale</Text>
-            <TouchableOpacity onPress={() => navigation.navigate("")}>
-              <Text style={[styles.category, styles.colorcategory]}>
-                See More
-              </Text>
-            </TouchableOpacity>
-          </View>
-
-          <View style={{ flex: 1 }}>
-            <FlatList
-              horizontal={true}
-              data={data.products.nodes}
-              renderItem={({ item }) => <Card item={item} />}
-              keyExtractor={(item) => item.id.toString()}
-            />
-          </View>
+          <FlatList
+            horizontal={true}
+            data={data.products.nodes}
+            renderItem={({ item }) => <Card item={item} />}
+            keyExtractor={(item) => item.id.toString()}
+          />
         </View>
         <View>
-          <View
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginVertical: 25,
-            }}
-          >
-            <Text style={styles.category}>Mega Sale</Text>
-            <TouchableOpacity onPress={() => navigation.navigate("")}>
-              <Text style={[styles.category, styles.colorcategory]}>
-                See More
-              </Text>
-            </TouchableOpacity>
-          </View>
-
-          <View style={{ flex: 1 }}>
-            <FlatList
-              horizontal={true}
-              data={data.products.nodes}
-              renderItem={({ item }) => <Card item={item} />}
-              keyExtractor={(item) => item.id.toString()}
-            />
-          </View>
-        </View>
-        <View style={{position:'relative'}}>
-        <Image
-          source={require("../../../assets/image 51.png")}
-        />
-        <View style={{ position: "absolute", top: 40, padding: 10 }}>
-          <Text style={styles.promotion}>Recomended {"\n"}Product</Text>
-          <Text style={styles.promotiontext}>
-            We recommend the best for you
-          </Text>
-        </View>
-        </View>
-       
-        <View style={styles.slider}>
-          <View style={styles.containercard}>
-            <FlatList
-              data={data.products.nodes} numColumns={2}
-              renderItem={({ item }) => <Card item={item} />}
-              keyExtractor={(item, index) => item}
-            />
-          </View>
+          <Category />
         </View>
       </SafeAreaView>
     </ScrollView>
