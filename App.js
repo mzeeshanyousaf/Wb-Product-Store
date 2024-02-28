@@ -40,6 +40,7 @@ const App = () => {
             ),
           }}
         >
+                    <Stack.Screen name="Home" component={Home} />
           <Stack.Screen
             name="FirstScreen"
             component={FirstScreen}
@@ -49,7 +50,7 @@ const App = () => {
           <Stack.Screen name="Login" component={LoginPage} />
           <Stack.Screen name="Sign" component={SignPage} />
           <Stack.Screen name="Forget" component={ForgetPage} />
-          <Stack.Screen name="Home" component={Home} />
+
         </Stack.Navigator>
       </NavigationContainer>
     </ApolloProvider>

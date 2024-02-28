@@ -44,7 +44,7 @@ const Home = () => {
     <View style={{ alignItems: "center", padding: 20 }}>
       <Text style={{ color: "black", fontSize: 33 }}>{"Welcome to WB Store"}</Text>
       <Text style={{ color: "black", fontSize: 28 }}>Products</Text>
-      <FlatList
+      <FlatList horizontal={true} showsHorizontalScrollIndicator={false}
         data={data.products.nodes}
         renderItem={({ item }) => <Card item={item} />}
         keyExtractor={(item) => item.id.toString()}
