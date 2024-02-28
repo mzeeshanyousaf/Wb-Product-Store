@@ -40,27 +40,22 @@ function TabNavigation() {
       >
         <Tab.Screen
           options={{
+
+            tabBarIcon: ({ color, size }) => (
+              <Feather name="home" size={size} color={color} />
+            ),
+          }}
+          name="Home1"
+          component={Home}
+        />
+        <Tab.Screen
+          options={{
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="search-outline" size={size} color={color} />
             ),
           }}
           name="Exployre"
           component={Exployre}
-        />
-        <Tab.Screen
-          options={{
-            // tabBarLabelStyle: true,
-            // tabBarStyle: {
-            //   position: "absolute",
-            //   bottom: 0,
-            //   paddingBottom: 20,
-            // },
-            tabBarIcon: ({ color, size }) => (
-              <Feather name="home" size={size} color={color} />
-            ),
-          }}
-          name="Home"
-          component={Home}
         />
 
         <Tab.Screen
@@ -81,6 +76,7 @@ function TabNavigation() {
           name="Offers"
           component={Offers}
         />
+
         <Tab.Screen
           options={{
             tabBarIcon: ({ color, size }) => (

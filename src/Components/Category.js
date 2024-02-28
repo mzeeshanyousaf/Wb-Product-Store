@@ -148,20 +148,7 @@ const Category = (props) => {
           </View>
         </TouchableOpacity>
       </ScrollView>
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginVertical: 25,
-        }}
-      >
-        <Text style={styles.category}>Flash Sale</Text>
-        <TouchableOpacity onPress={() => props.navigation.navigate("Login")}>
-          <Text style={[styles.category, styles.colorcategory]}>See More</Text>
-        </TouchableOpacity>
-      </View>
+
       <View>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           {/* {products.map((product) => (
@@ -207,22 +194,13 @@ const Category = (props) => {
         </ScrollView>
       </View>
       <View style={styles.slider}>
-        <Image
-          style={styles.feature}
-          source={require("./../../assets/image 51.png")}
-        />
-        <View style={{ position: "absolute", top: 40, padding: 10 }}>
-          <Text style={styles.promotion}>Recomended {"\n"}Product</Text>
-          <Text style={styles.promotiontext}>
-            We recommend the best for you
-          </Text>
-        </View>
-
         <View style={styles.containercard}>
           <View style={styles.row}>
             <TouchableOpacity>
               <View style={styles.cardbox1}>
-                <Image source={require("./../../assets/image Product5.png")}></Image>
+                <Image
+                  source={require("./../../assets/image Product5.png")}
+                ></Image>
 
                 <Text style={styles.cardtext}>
                   FS - Nike Air {"\n"}Max 270 React...
@@ -236,7 +214,9 @@ const Category = (props) => {
             </TouchableOpacity>
             <TouchableOpacity>
               <View style={styles.cardbox1}>
-                <Image source={require("./../../assets/image Product7.png")}></Image>
+                <Image
+                  source={require("./../../assets/image Product7.png")}
+                ></Image>
 
                 <Text style={styles.cardtext}>
                   FS - Nike Air {"\n"}Max 270 React...
@@ -252,7 +232,9 @@ const Category = (props) => {
           <View style={styles.row}>
             <TouchableOpacity>
               <View style={styles.cardbox1}>
-                <Image source={require("./../../assets/image Product7.png")}></Image>
+                <Image
+                  source={require("./../../assets/image Product7.png")}
+                ></Image>
 
                 <Text style={styles.cardtext}>
                   FS - Nike Air {"\n"}Max 270 React...
@@ -266,7 +248,9 @@ const Category = (props) => {
             </TouchableOpacity>
             <TouchableOpacity>
               <View style={styles.cardbox1}>
-                <Image source={require("./../../assets/image Product6.png")}></Image>
+                <Image
+                  source={require("./../../assets/image Product6.png")}
+                ></Image>
 
                 <Text style={styles.cardtext}>
                   FS - Nike Air {"\n"}Max 270 React...
@@ -281,9 +265,7 @@ const Category = (props) => {
           </View>
         </View>
       </View>
-      <View>
-        {/* <SinglePage /> */}
-      </View>
+      <View>{/* <SinglePage /> */}</View>
     </View>
   );
 };
