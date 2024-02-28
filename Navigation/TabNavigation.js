@@ -1,6 +1,5 @@
 import { View, Text } from "react-native";
 import React from "react";
-
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
   Feather,
@@ -59,7 +58,7 @@ function TabNavigation() {
               <Feather name="home" size={size} color={color} />
             ),
           }}
-          name="Home"
+          name="Home1"
           component={Home}
         />
 

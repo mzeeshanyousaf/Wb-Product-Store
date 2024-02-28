@@ -43,10 +43,10 @@ const Home = () => {
   if (error) return <Text>Error: {error.message}</Text>;
 
   return (
-    <SafeAreaView style={{ flex: 1, paddingVertical: 40, paddingHorizontal: 20 }}>
-      <Text style={{ color: "black", fontSize: 33 }}>{"Welcome to WB Store"}</Text>
-      <Text style={{ color: "black", fontSize: 28 }}>Products</Text>
-      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+    <ScrollView>
+    <SafeAreaView style={{ flex: 1, paddingVertical: 0, paddingHorizontal: 20 }}>
+     <View  style={{flex:1}}>
+     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
         <Offer
           imagePath={require("../../../assets/Promotion Image.png")}
           saleTitle="Mega Sale"
@@ -64,12 +64,24 @@ const Home = () => {
           seconds="16"
         />
       </ScrollView>
+     </View>
+     
+      <View style={{flex:1}}>
       <FlatList
+      horizontal={true}
         data={data.products.nodes}
         renderItem={({ item }) => <Card item={item} />}
         keyExtractor={(item) => item.id.toString()}
       />
+      </View>
+   
+      <View>
+        <Category/>
+      </View>
+     
     </SafeAreaView>
+    </ScrollView>
+  
   );
 };
 

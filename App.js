@@ -7,6 +7,7 @@ const Stack = createNativeStackNavigator();
 
 /// MY components
 import LoginSignPage from "./src/Screens/LoginSignPage/LoginSignPage";
+import Home from "./src/Screens/Home/Home";
 import LoginPage from "./src/Screens/Login/LoginPage";
 import SignPage from "./src/Screens/Sign/SignPage";
 import WebImg from "./src/Components/WebImg";
@@ -42,6 +43,11 @@ const App = () => {
             ),
           }}
         >
+             <Stack.Screen
+            options={{ headerShown: false }}
+            name="Home"
+            component={TabNavigation}
+          />
           <Stack.Screen
             name="FirstScreen"
             component={FirstScreen}
@@ -51,11 +57,7 @@ const App = () => {
           <Stack.Screen name="Login" component={LoginPage} />
           <Stack.Screen name="Sign" component={SignPage} />
           <Stack.Screen name="Forget" component={ForgetPage} />
-          <Stack.Screen
-            options={{ headerShown: false }}
-            name="Drawer"
-            component={TabNavigation}
-          />
+       
           <Stack.Screen
             options={{ headerShown: false }}
             name="SearchEx"

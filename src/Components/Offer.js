@@ -40,11 +40,15 @@ export default Offer
 
 const styles = StyleSheet.create({
     container:{
-        padding:10,
+        padding:0,
     },
     slider:{
         position:'relative',
-        margin: 10
+        marginHorizontal: 10,
+        marginVertical:20,
+        width:360,
+        borderRadius:20,
+        overflow:"hidden"
     },
     promotion:{
         fontSize:32,
@@ -71,5 +75,9 @@ const styles = StyleSheet.create({
         color:'black',
         fontWeight:'bold',
         fontSize: 22
-    }    
+    } ,
+    feature:{
+        width:'100%',
+        height:220,     
+    }   
 })

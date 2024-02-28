@@ -5,12 +5,13 @@ import {
   View,
   Image,
   TouchableOpacity,
+  FlatList
 } from "react-native";
 import React from "react";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import ProductSlider from "./../Components/ProductSlider";
+import Card from "./Card";
 // import SinglePage from "./SinglePage";
-
 const Category = (props) => {
   const products = [
     {
@@ -163,19 +164,12 @@ const Category = (props) => {
         </TouchableOpacity>
       </View>
       <View>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          {/* {products.map((product) => (
-            <ProductSlider
-              key={product.id}
-              imageSource={product.imageSource}
-              title={product.title}
-              titledetail={product.titledetail}
-              price={product.price}
-              discountedPrice={product.discountedPrice}
-              discount={product.discount}
-            />
-          ))} */}
-        </ScrollView>
+      <FlatList
+      horizontal={true}
+        data={data.products.nodes}
+        renderItem={({ item }) => <Card item={item} />}
+        keyExtractor={(item) => item.id.toString()}
+      />
       </View>
       <View
         style={{
