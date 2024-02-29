@@ -147,6 +147,7 @@ const Home = ({ navigation }) => {
         </View>
         <View>
           <FlatList
+            showsHorizontalScrollIndicator={false}
             horizontal={true}
             data={productsData.products.nodes}
             renderItem={({ item }) => (
@@ -197,10 +198,37 @@ const Home = ({ navigation }) => {
             />
           </View>
         </View>
-        <View style={{ marginVertical: 20 }}>
-          <Image
-            style={styles.feature}
-            source={require("../../../assets/image 51.png")}
+
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Text style={[styles.category, { marginVertical: 10 }]}>Women</Text>
+          <TouchableOpacity>
+            <Text style={[styles.category, styles.colorcategory]}>More</Text>
+          </TouchableOpacity>
+        </View>
+        <View>
+          <FlatList
+            showsHorizontalScrollIndicator={false}
+            horizontal={true}
+            data={data.products.nodes}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("SinglePage", {
+                    itemID: item.databaseId,
+                  });
+                }}
+              >
+                <Card item={item} />
+              </TouchableOpacity>
+            )}
+            keyExtractor={(item) => item.id.toString()}
           />
           <View style={{ position: "absolute", top: 40, padding: 10 }}>
             <Text style={styles.promotion}>Recomended {"\n"}Product</Text>

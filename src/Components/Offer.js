@@ -1,6 +1,6 @@
-import { ScrollView, StyleSheet, Text, View, Image } from "react-native";
-import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { ScrollView, StyleSheet, Text, View, Image, Dimensions } from 'react-native'
+import React from 'react'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const Offer = ({ imagePath, saleTitle, saleValue, hour, minute, seconds }) => {
   return (
@@ -42,48 +42,48 @@ const Offer = ({ imagePath, saleTitle, saleValue, hour, minute, seconds }) => {
 
 export default Offer;
 
+const window = Dimensions.get('window');
 const styles = StyleSheet.create({
-  container: {
-    padding: 0,
-  },
-  slider: {
-    position: "relative",
-
-    marginVertical: 20,
-    width: 320,
-    marginRight: 20,
-    textAlign: "center",
-    borderRadius: 20,
-    overflow: "hidden",
-  },
-  promotion: {
-    fontSize: 32,
-    fontWeight: "bold",
-    color: "white",
-  },
-
-  timebox: {
-    marginHorizontal: 5,
-    padding: 15,
-    backgroundColor: "white",
-    borderRadius: 15,
-  },
-  ratio: {
-    paddingVertical: 15,
-  },
-  ratiotext: {
-    color: "#ffffff",
-    fontWeight: "bold",
-    fontSize: 22,
-  },
-
-  timetittle: {
-    color: "black",
-    fontWeight: "bold",
-    fontSize: 22,
-  },
-  feature: {
-    width: "100%",
-    height: 220,
-  },
-});
+    container:{
+        padding:0,
+    },
+    slider:{
+        position:'relative',
+        marginHorizontal: 10,
+        marginVertical:20,
+        width: window.width,
+        borderRadius:20,
+        overflow:"hidden",
+        
+    },
+    promotion:{
+        fontSize:32,
+        fontWeight:'bold',
+        color:'white'
+     },
+    
+    timebox:{
+        marginHorizontal:5,
+        padding:15,
+        backgroundColor:'white',
+        borderRadius:15,
+    },
+    ratio:{
+        paddingVertical:15,
+    },
+    ratiotext:{
+        color:'#ffffff',
+        fontWeight:'bold',
+        fontSize: 22
+    },
+   
+    timetittle:{
+        color:'black',
+        fontWeight:'bold',
+        fontSize: 22
+    } ,
+    feature:{
+        width:'100%',
+        height:200,     
+    }   
+})
