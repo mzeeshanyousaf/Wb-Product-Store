@@ -8,13 +8,13 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
+  ActivityIndicator,
 } from "react-native";
 import { useQuery, gql } from "@apollo/client";
 import Card from "../../Components/Card";
 import Offer from "../../Components/Offer";
 import Category from "../../Components/Category";
 import ExployreCard from "../../Components/ExployreCard";
-
 
 // Query
 const GET_PRODUCTS = gql`
@@ -47,15 +47,51 @@ const GET_PRODUCTS = gql`
     }
   }
 `;
-
+const GET_CATEGORIES = gql`
+  query GET_CATEGORIES {
+    productCategories {
+      edges {
+        node {
+          id
+          image {
+            sourceUrl
+          }
+          name
+        }
+      }
+    }
+  }
+`;
 const Home = ({ navigation }) => {
-  const { loading, error, data } = useQuery(GET_PRODUCTS);
+  const {
+    loading: productsLoading,
+    error: productsError,
+    data: productsData,
+  } = useQuery(GET_PRODUCTS);
+  const {
+    loading: categoriesLoading,
+    error: categoriesError,
+    data: categoriesData,
+  } = useQuery(GET_CATEGORIES);
 
-  if (loading) return <Text>Loading...</Text>;
-  if (error) return <Text>Error: {error.message}</Text>;
+  if (productsLoading || categoriesLoading)
+    return (
+      <View
+        style={{
+          flex: 1,
+          height: "100%",
+          alignContent: "center",
+          alignContent: "center",
+        }}
+      >
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
+  if (productsError || categoriesError)
+    return <Text>Error: {error.message}</Text>;
 
   return (
-    <ScrollView>
+    <ScrollView styles={{}}>
       <SafeAreaView
         style={{ flex: 1, paddingVertical: 0, paddingHorizontal: 20 }}
       >
@@ -78,87 +114,122 @@ const Home = ({ navigation }) => {
               seconds="16"
             />
           </ScrollView>
+          <View
+            style={[
+              styles.container,
+              { flexDirection: "row", gap: 20, flexWrap: "wrap" },
+            ]}
+          >
+            {categoriesData.productCategories.edges.map((edge, index) =>
+              index >= 3 ? null : (
+                <ExployreCard
+                  key={edge.node.id}
+                  name={edge.node.name}
+                  img={edge.node.image.sourceUrl}
+                />
+              )
+            )}
+          </View>
         </View>
-        <View style={{flexDirection:'row', gap:20}}>
-        <ExployreCard title={'Men'}/>
-        <ExployreCard title={'Women'}/>
-        <ExployreCard title={'Both'}/>
-        </View>
+
         <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <Text style={[styles.category,{marginVertical:10}]}>Men</Text>
-        <TouchableOpacity>
-          <Text style={[styles.category, styles.colorcategory]}>More</Text>
-        </TouchableOpacity>
-        
-      </View>
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Text style={[styles.category, { marginVertical: 10 }]}>Men</Text>
+          <TouchableOpacity>
+            <Text style={[styles.category, styles.colorcategory]}>More</Text>
+          </TouchableOpacity>
+        </View>
         <View>
           <FlatList
             horizontal={true}
-            data={data.products.nodes}
-            renderItem={({ item }) =>  ( 
-              <TouchableOpacity onPress={()=>{navigation.navigate("SinglePage",{itemID:item.databaseId})}}>
-               <Card item={item} />
-               </TouchableOpacity>
-               )}
-            keyExtractor={(item) => item.id.toString()}
+            data={productsData.products.nodes}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("SinglePage", {
+                    itemID: item.databaseId,
+                  });
+                }}
+              >
+                <Card item={item} />
+              </TouchableOpacity>
+            )}
+            keyExtractor={(item, index) => item.id}
           />
         </View>
+        <View>{/* <Category /> */}</View>
         <View>
-          {/* <Category /> */}
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <Text style={[styles.category, { marginVertical: 10 }]}>Women</Text>
+            <TouchableOpacity>
+              <Text style={[styles.category, styles.colorcategory]}>More</Text>
+            </TouchableOpacity>
+          </View>
+          <View>
+            <FlatList
+              horizontal={true}
+              data={productsData.products.nodes}
+              renderItem={({ item }) => (
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate("SinglePage", {
+                      itemID: item.databaseId,
+                    });
+                  }}
+                >
+                  <Card item={item} />
+                </TouchableOpacity>
+              )}
+              keyExtractor={(item, index) => item.id}
+            />
+          </View>
         </View>
-        <View>
-        <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <Text style={[styles.category,{marginVertical:10 }]}>Women</Text>
-        <TouchableOpacity>
-          <Text style={[styles.category, styles.colorcategory]}>More</Text>
-        </TouchableOpacity>
-        
-      </View>
-      <View>
-          <FlatList
-            horizontal={true}
-            data={data.products.nodes}
-            renderItem={({ item }) =>  ( 
-              <TouchableOpacity onPress={()=>{navigation.navigate("SinglePage",{itemID:item.databaseId})}}>
-               <Card item={item} />
-               </TouchableOpacity>
-               )}
-            keyExtractor={(item) => item.id.toString()}
+        <View style={{ marginVertical: 20 }}>
+          <Image
+            style={styles.feature}
+            source={require("../../../assets/image 51.png")}
           />
-        </View>
-        </View>
-        <View style={{marginVertical:20}}> 
-        <Image
-          style={styles.feature}
-          source={require("../../../assets/image 51.png")}
-        />
-        <View style={{ position: "absolute", top: 40, padding: 10 }}>
-          <Text style={styles.promotion}>Recomended {"\n"}Product</Text>
-          <Text style={styles.promotiontext}> We recommend the best for you</Text>
-        </View>
+          <View style={{ position: "absolute", top: 40, padding: 10 }}>
+            <Text style={styles.promotion}>Recomended {"\n"}Product</Text>
+            <Text style={styles.promotiontext}>
+              We recommend the best for you
+            </Text>
+          </View>
         </View>
         <ScrollView>
-          <View style={{flexDirection:'row', flexWrap:'wrap', justifyContent:'space-between', gap:20, }}>
-          {data.products.nodes.map((item, index) => (
-            <TouchableOpacity onPress={()=>{navigation.navigate("SinglePage",{itemID:item.databaseId})}}>
-            <Card index={index} space={180} item={item} />
-            </TouchableOpacity>
-          ))}
-        </View>
+          <View
+            style={{
+              flexDirection: "row",
+              flexWrap: "wrap",
+              justifyContent: "space-between",
+              gap: 20,
+            }}
+          >
+            {productsData.products.nodes.map((item, index) => (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("SinglePage", {
+                    itemID: item.databaseId,
+                  });
+                }}
+              >
+                <Card key={index} space={180} item={item} />
+              </TouchableOpacity>
+            ))}
+          </View>
         </ScrollView>
       </SafeAreaView>
     </ScrollView>
@@ -177,11 +248,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "300",
   },
-  feature:{
-    width:'100%',
-    height:200,
-    borderRadius:20,
-    
+  feature: {
+    width: "100%",
+    height: 200,
+    borderRadius: 20,
   },
   category: {
     fontSize: 16,
@@ -193,5 +263,3 @@ const styles = StyleSheet.create({
 });
 
 export default Home;
-
-

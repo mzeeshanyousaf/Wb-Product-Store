@@ -58,15 +58,16 @@ const App = () => {
           <Stack.Screen name="Login" component={LoginPage} />
           <Stack.Screen name="Sign" component={SignPage} />
           <Stack.Screen name="Forget" component={ForgetPage} />
-          <Stack.Screen
-            options={{ headerShown: false }}
-            name="SearchEx"
-            component={SearchEx}
-          />
+
           <Stack.Screen
             options={{ headerShown: false }}
             name="SinglePage"
             component={SinglePage}
+          />
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="SearchEx"
+            component={SearchEx}
           />
         </Stack.Navigator>
       </NavigationContainer>
@@ -75,4 +76,3 @@ const App = () => {
 };
 
 export default App;
-

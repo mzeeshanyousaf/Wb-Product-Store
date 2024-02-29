@@ -1,19 +1,22 @@
 import React from "react";
 import { View, StyleSheet, Image, Text } from "react-native";
 
-const ExployreCard = ({ title, url }) => {
+const ExployreCard = ({ name, img }) => {
+  console.log(img);
   return (
     <View style={styles.cardContainer}>
       <View styles={styles.cardContainer}>
         <View style={styles.ImgDivStyle}>
           <Image
             style={{ width: 20, height: 20 }}
-            source={require("../../assets/ExployerCardImages/man-shirt.png")}
+            source={{
+              uri: img ? img : "../../assets/ExployerCardImages/man-shirt.png",
+            }}
           />
         </View>
         <View style={{ alignItems: "center", marginTop: 10 }}>
           <Text style={styles.CardTitle} numberOfLines={2}>
-            {title}
+            {name}
           </Text>
         </View>
       </View>
