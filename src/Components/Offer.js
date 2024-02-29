@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View, Image } from 'react-native'
+import { ScrollView, StyleSheet, Text, View, Image, Dimensions } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
@@ -38,6 +38,7 @@ const Offer = ({imagePath, saleTitle, saleValue, hour, minute, seconds}) => {
 
 export default Offer
 
+const window = Dimensions.get('window');
 const styles = StyleSheet.create({
     container:{
         padding:0,
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
         position:'relative',
         marginHorizontal: 10,
         marginVertical:20,
-        width:360,
+        width: window.width,
         borderRadius:20,
         overflow:"hidden",
         
@@ -79,6 +80,6 @@ const styles = StyleSheet.create({
     } ,
     feature:{
         width:'100%',
-        height:220,     
+        height:200,     
     }   
 })

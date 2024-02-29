@@ -100,6 +100,7 @@ const Home = ({ navigation }) => {
       </View>
         <View>
           <FlatList
+            showsHorizontalScrollIndicator={false}
             horizontal={true}
             data={data.products.nodes}
             renderItem={({ item }) =>  ( 
@@ -130,6 +131,7 @@ const Home = ({ navigation }) => {
       </View>
       <View>
           <FlatList
+            showsHorizontalScrollIndicator={false}
             horizontal={true}
             data={data.products.nodes}
             renderItem={({ item }) =>  ( 
@@ -152,14 +154,21 @@ const Home = ({ navigation }) => {
         </View>
         </View>
         <ScrollView>
-          <View style={{flexDirection:'row', flexWrap:'wrap', justifyContent:'space-between', gap:20, }}>
-          {data.products.nodes.map((item, index) => (
-            <TouchableOpacity onPress={()=>{navigation.navigate("SinglePage",{itemID:item.databaseId})}}>
-            <Card index={index} space={180} item={item} />
-            </TouchableOpacity>
-          ))}
-        </View>
-        </ScrollView>
+  <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+    {data.products.nodes.map((item, index) => (
+      <TouchableOpacity
+        key={item.databaseId} // Make sure to provide a unique key for each item
+        onPress={() => {
+          navigation.navigate("SinglePage", { itemID: item.databaseId });
+        }}
+        style={{ width: '50%', padding: 5 }} // Adjust the width as needed
+      >
+        <Card index={index} space={180} item={item} />
+      </TouchableOpacity>
+    ))}
+  </View>
+</ScrollView>
+
       </SafeAreaView>
     </ScrollView>
   );

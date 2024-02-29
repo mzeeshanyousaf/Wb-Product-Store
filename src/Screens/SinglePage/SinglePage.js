@@ -77,7 +77,7 @@ const SinglePage = ({route}) => {
   const colors = ['#FFC833', '#FB7181', '#53D1B6', '#40BFFF', 'black', 'grey', 'silver'];
 
   return (
-    <View>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         <Image source={require('../../../assets/single.png')}/>
      
@@ -159,13 +159,16 @@ const SinglePage = ({route}) => {
             />
           ))} */}
         </ScrollView>
-    </View>
+    </ScrollView>
   );
 };
 
 export default SinglePage;
 
 const styles = StyleSheet.create({
+  container:{
+    padding:10
+  },
   producttitle:{
     fontSize:20,
     fontWeight:'bold'
