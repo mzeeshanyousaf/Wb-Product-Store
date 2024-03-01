@@ -216,7 +216,7 @@ const Home = ({ navigation }) => {
           <FlatList
             showsHorizontalScrollIndicator={false}
             horizontal={true}
-            data={data.products.nodes}
+            data={productsData.products.nodes}
             renderItem={({ item }) => (
               <TouchableOpacity
                 onPress={() => {
@@ -229,6 +229,12 @@ const Home = ({ navigation }) => {
               </TouchableOpacity>
             )}
             keyExtractor={(item) => item.id.toString()}
+          />
+          </View>
+          <View style={{ marginVertical: 20 }}>
+          <Image
+            style={styles.feature}
+            source={require("../../../assets/image 51.png")}
           />
           <View style={{ position: "absolute", top: 40, padding: 10 }}>
             <Text style={styles.promotion}>Recomended {"\n"}Product</Text>
